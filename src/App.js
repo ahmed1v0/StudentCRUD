@@ -1,7 +1,7 @@
 import './App.css';
 import RegisterForm from './components/RegisterForm';
 import NavBar from './components/NavBar';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, createBrowserRouter } from "react-router-dom";
 import { useContext, useState } from "react";
 import { StudentContext } from './StudentContext';
 import ListForm from './components/ListForm.jsx';
@@ -11,12 +11,13 @@ function App() {
   const {students,addStudent,removeStudent,selectStudent,selectedStudent} = useContext(StudentContext);
   console.log(students);
   
+  
 
   return (
     
     <div className="App">
-      <NavBar />
       <BrowserRouter>
+      <NavBar />
         <Routes>
           <Route path="/" element={<RegisterForm addStudent={addStudent} />} />
           <Route path="/list-students" element={<ListForm students = {students}removeStudent = {removeStudent} selectStudent = {selectStudent} selectedStudent = {selectedStudent}/>} />
